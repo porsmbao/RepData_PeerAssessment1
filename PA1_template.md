@@ -5,7 +5,6 @@ output:
     keep_md: true
 ---
 
-
 ## Loading and preprocessing the data
 
 ```r
@@ -15,7 +14,7 @@ dt$date <- as.Date(dt$date, "%Y-%m-%d")
 
 
 ## What is mean total number of steps taken per day?
-1. Calculate total number of steps taken per day  
+1. Calculate total number of steps taken per day.  
 
 ```r
 tb <- tapply(dt$steps, dt$date, sum, na.rm = TRUE)
@@ -89,7 +88,7 @@ df
 ## 60 2012-11-29  7047
 ## 61 2012-11-30     0
 ```
-2. Make a histogram of the total number of steps taken each day  
+2. Make a histogram of the total number of steps taken each day.  
 
 ```r
 df.freq <- as.Date(as.vector(rep(df$date, df$steps)),origin = "1900-01-01")
@@ -98,7 +97,7 @@ hist(df.freq, breaks = 12, freq = T, main = "Histogram of Steps", ylab = "steps"
 
 ![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
-3. Calculate and report the mean and median of the total number of steps taken per day  
+3. Calculate and report the mean and median of the total number of steps taken per day.  
 
 ```r
 mn <- tapply(dt$steps, dt$date, mean, na.rm = T)
@@ -176,7 +175,7 @@ stpdata
 
 
 ## What is the average daily activity pattern?
-1. Make a time series plot of the 5-minute interval and the average number of steps taken, averaged across all days  
+1. Make a time series plot of the 5-minute interval and the average number of steps taken, averaged across all days.  
 
 ```r
 interval_ave <- tapply(dt$steps, dt$interval, mean, na.rm = T)
@@ -203,7 +202,7 @@ na_num <- sum(is.na(dt$steps))
 
 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.  
 The missing values will be filled with the average interval value calculated in `interval_ave`.  
-3. Create a new dataset that is equal to the original dataset but with the missing data filled in  
+3. Create a new dataset that is equal to the original dataset but with the missing data filled in.  
 **Fill in the missing value:**  
 
 ```r
